@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import './styles.scss';
 import _ from "lodash";
 import { PostsContext } from "../../store/Posts/index";
@@ -10,7 +10,10 @@ type Post = {
     absoluteIndex: number,
     name: string,
   },
-  page: number
+  page: number,
+  handleClick: (id: number) => void,
+  disabled: boolean,
+  clickedItems: number[]
 };
 
 type MyContextType = {
@@ -18,7 +21,9 @@ type MyContextType = {
   setState?: (data: object) => void;
 }
 
-export default ({ data: { id, absoluteIndex, name }, page }: Post) => {
+export default ({ data: { id, absoluteIndex, name }, page, handleClick, disabled, clickedItems }: Post) => {
+
+
   const myPostContext = useContext<MyContextType>(PostsContext);
 
   window.onscroll = _.debounce(async () => {
@@ -29,15 +34,17 @@ export default ({ data: { id, absoluteIndex, name }, page }: Post) => {
       const { data } = await getPosts(page + 1);
       myPostContext.setState({
         ...myPostContext.state,
-        data: _.flatten([myPostContext.state.data.data, data.data]),
-        metadata: data.metadata
+        clickedItems,
+        data: {
+          data: _.flatten([myPostContext.state.data.data, data.data]), metadata: data.metadata
+        },
       });
     }
   }, 100);
 
   return (
-    <li className="item">
-      <span>name</span>:{name}
+    <li className={`item ${disabled && 'disabled'}`} onClick={() => handleClick(absoluteIndex)}>
+      <span>name:</span>{name}
       <span>id:</span>{id}
       <span>index:</span>{absoluteIndex}
     </li>

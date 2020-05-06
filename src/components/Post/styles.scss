@@ -3,10 +3,18 @@
   color: #000;
   display: flex;
   padding: 5px;
-
-  span {
+  cursor: pointer;
+  > span {
     color: #DC0099;
     font-weight: 800;
     padding: 1px 3px 0 10px;
   }
 }
+.disabled {
+  cursor: not-allowed;
+  color: rgba(53, 52, 52, 0.692);
+  > span {
+    color: rgba(53, 52, 52, 0.692);
+  }
+}
+

@@ -9,6 +9,7 @@ const INITIAL_STATE = {
   data: [] as any[],
   loaded: true,
   error: false,
+  clickedItems: [] as number[]
 };
 
 const getLocalStorageState = () => {
@@ -31,25 +32,24 @@ const PostsProvider: React.FC<Props> = ({ children }) => {
   const providerValue = { state, setState: updateState };
 
   useEffect(() => {
-    areEqualObjects(state, INITIAL_STATE) &&
-      (async () => {
-        try {
-          updateState({ loaded: false });
-          const { data } = await getPosts();
-          updateState({ data });
-        } catch (error) {
-          console.error(error);
-          updateState({ error: true });
-        } finally {
-          updateState({ loaded: true });
-        }
-      })();
+    (async () => {
+      try {
+        updateState({ loaded: false });
+        const { data } = await getPosts();
+        updateState({ data });
+      } catch (error) {
+        console.error(error);
+        updateState({ error: true });
+      } finally {
+        updateState({ loaded: true });
+      }
+    })();
   }, []); //eslint-disable-line
 
-  // useEffect(() => {
-  //   setLocalStorageState(state);
-  // }, [state]);
-  console.log("PROVIDER VALUE ==> ", providerValue);
+  useEffect(() => {
+    setLocalStorageState(state);
+  }, [state]);
+
   return <PostsContext.Provider value={providerValue}>{children}</PostsContext.Provider>;
 };
 

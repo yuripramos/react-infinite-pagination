@@ -16,14 +16,19 @@ type Props = {
 export default ({ data }: Props) => {
 
   const [posts, setPosts] = useState([]);
+  const [clickedItems, setClickedItems] = useState<number[]>([]);
 
   useEffect(() => {
-    console.log("UseEffect POSTLIST");
     setPosts(data.data);
   }, [data]);
 
   const hasPosts = posts && posts.length > 0;
-  console.log("render", data.data);
+
+  const handleClick = (id: number) => {
+    setClickedItems([...clickedItems, id]);
+  }
+
+
   return (
     <section>
       <header>
@@ -31,8 +36,15 @@ export default ({ data }: Props) => {
       </header>
       {hasPosts ? (
         <ul className="posts">
-          {data.data.map((post: any) => (
-            <Post key={getKey(data.metadata)} data={post} page={parseInt(data.metadata.page)} />
+          {posts.map((post: any) => (
+            <Post
+              key={getKey(data.metadata)}
+              data={post}
+              page={parseInt(data.metadata.page)}
+              handleClick={handleClick}
+              disabled={clickedItems.includes(post.absoluteIndex)}
+              clickedItems={clickedItems}
+            />
           ))}
         </ul>
       ) : (
