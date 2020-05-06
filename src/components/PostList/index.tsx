@@ -2,28 +2,30 @@ import React, { useState, useEffect } from 'react';
 
 import Post from '../Post/index';
 import NoContent from '../NoContent/index';
-import Arrow from '../../assets/icons/Arrow';
 
 const getKey = (post: any) => {
-  const { authorId, publishedAt } = post.metadata;
-  return `post-${authorId}-${publishedAt}`;
+  const { page } = post;
+  return `post-${page}-${Math.round(Math.random() * 10000)}`;
 };
 
 type Props = {
-  data: any
+  data: any,
+  metadata: any
 }
 
-export default ({ data }: Props) => {
-  console.log("data comp", data);
+export default ({ data: { data, metadata } }: Props) => {
+
+
   const [posts, setPosts] = useState([]);
 
 
   useEffect(() => {
+    console.log("inside USeEffect")
     setPosts(data);
   }, [data]);
 
   const hasPosts = posts.length > 0;
-
+  console.log("posts", posts, hasPosts, metadata);
   return (
     <section>
       <header>
@@ -32,7 +34,7 @@ export default ({ data }: Props) => {
       {hasPosts ? (
         <ul className="posts">
           {data.map((post: any) => (
-            <Post key={getKey(post)} id={getKey(post)} data={post} />
+            <Post key={getKey(metadata)} data={post} />
           ))}
         </ul>
       ) : (

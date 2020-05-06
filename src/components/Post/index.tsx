@@ -1,19 +1,21 @@
 import React from 'react';
 
-import { getDate } from '../../utils/helpers';
 
 type Post = {
   data: {
-  }
+    id: string,
+    absoluteIndex: number,
+    name: string,
+  };
 }
 
 
-export default ({ data }: Post) => {
-
-
+export default ({ data: { id, absoluteIndex, name } }: Post) => {
   return (
     <li>
-      post
+      name: {name}
+      id: {id}
+      index: {absoluteIndex}
     </li>
   );
 };
