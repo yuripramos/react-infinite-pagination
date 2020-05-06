@@ -1,9 +1,9 @@
 import React, { createContext, useState, useEffect, ReactNode } from 'react';
 
 import { getPosts } from '../../../src/services/api';
-import { getStorageObject, setStorageObject, areEqualObjects } from '../../utils/helpers';
+import { getStorageObject, setStorageObject } from '../../utils/helpers';
 
-const STORAGE_ID = 'the-simple-post-posts';
+const STORAGE_ID = 'posts-and-disabled-itens';
 
 const INITIAL_STATE = {
   data: [] as any[],

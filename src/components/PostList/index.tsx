@@ -10,13 +10,13 @@ const getKey = (post: any) => {
 
 type Props = {
   data: any,
-  metadata: any
+  disabledItems: number[]
 }
 
-export default ({ data }: Props) => {
+export default ({ data, disabledItems }: Props) => {
 
-  const [posts, setPosts] = useState([]);
-  const [clickedItems, setClickedItems] = useState<number[]>([]);
+  const [posts, setPosts] = useState(data.data);
+  const [clickedItems, setClickedItems] = useState<number[]>(disabledItems);
 
   useEffect(() => {
     setPosts(data.data);
@@ -28,9 +28,8 @@ export default ({ data }: Props) => {
     setClickedItems([...clickedItems, id]);
   }
 
-
   return (
-    <section>
+    <section data-testid="postlist-section">
       <header>
         <h1>All Posts</h1>
       </header>

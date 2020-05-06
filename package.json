@@ -1,5 +1,5 @@
 {
-  "name": "react-micro-blog",
+  "name": "react-infinite-pagination",
   "version": "0.1.0",
   "private": true,
   "author": "Yuri Ramos",
@@ -109,14 +109,6 @@
     },
     "setupFilesAfterEnv": [
       "<rootDir>/setupTests.ts"
-    ],
-    "coverageThreshold": {
-      "global": {
-        "branches": 70,
-        "functions": 70,
-        "lines": 70,
-        "statements": 70
-      }
-    }
+    ]
   }
 }

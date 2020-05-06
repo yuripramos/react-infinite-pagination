@@ -5,10 +5,10 @@ import { PostsProvider } from '../../store/Posts/index';
 import Main from './index';
 
 
-afterEach(cleanup);
 
 describe("<Main />", () => {
 
+  afterEach(cleanup);
 
 
   it("Should render correctly", () => {
