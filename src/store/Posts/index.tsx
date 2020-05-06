@@ -46,11 +46,10 @@ const PostsProvider: React.FC<Props> = ({ children }) => {
       })();
   }, []); //eslint-disable-line
 
-  useEffect(() => {
-    setLocalStorageState(state);
-  }, [state]);
-
-  console.log("data received", providerValue);
+  // useEffect(() => {
+  //   setLocalStorageState(state);
+  // }, [state]);
+  console.log("PROVIDER VALUE ==> ", providerValue);
   return <PostsContext.Provider value={providerValue}>{children}</PostsContext.Provider>;
 };
 

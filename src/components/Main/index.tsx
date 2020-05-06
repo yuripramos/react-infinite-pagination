@@ -6,7 +6,7 @@ import { PostsContext } from '../../store/Posts/index';
 
 export default () => {
   const { state: posts }: any = useContext(PostsContext);
-
+  console.log("postlist", posts);
   return (
     <main>
       <Hero />

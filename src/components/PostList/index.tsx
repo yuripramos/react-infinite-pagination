@@ -5,7 +5,7 @@ import NoContent from '../NoContent/index';
 
 const getKey = (post: any) => {
   const { page } = post;
-  return `post-${page}-${Math.round(Math.random() * 1000000)}`;
+  return `post-${page}-${Math.round(Math.random() * 102134220)}`;
 };
 
 type Props = {
@@ -13,20 +13,17 @@ type Props = {
   metadata: any
 }
 
-export default ({ data: { data, metadata } }: Props) => {
-
+export default ({ data }: Props) => {
 
   const [posts, setPosts] = useState([]);
 
-
   useEffect(() => {
-    console.log('data', data);
-    setPosts(data);
+    console.log("UseEffect POSTLIST");
+    setPosts(data.data);
   }, [data]);
-  console.log("poss", posts);
 
-  const hasPosts = posts.length > 0;
-
+  const hasPosts = posts && posts.length > 0;
+  console.log("render", data.data);
   return (
     <section>
       <header>
@@ -34,8 +31,8 @@ export default ({ data: { data, metadata } }: Props) => {
       </header>
       {hasPosts ? (
         <ul className="posts">
-          {data.map((post: any) => (
-            <Post key={getKey(metadata)} data={post} page={parseInt(metadata.page)} />
+          {data.data.map((post: any) => (
+            <Post key={getKey(data.metadata)} data={post} page={parseInt(data.metadata.page)} />
           ))}
         </ul>
       ) : (
