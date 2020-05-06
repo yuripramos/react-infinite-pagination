@@ -1,0 +1,12 @@
+.item {
+  align-items: center;
+  color: #000;
+  display: flex;
+  padding: 5px;
+
+  span {
+    color: #DC0099;
+    font-weight: 800;
+    padding: 1px 3px 0 10px;
+  }
+}

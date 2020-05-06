@@ -35,9 +35,7 @@ const PostsProvider: React.FC<Props> = ({ children }) => {
       (async () => {
         try {
           updateState({ loaded: false });
-          console.log("data received");
           const { data } = await getPosts();
-          console.log("data received", data);
           updateState({ data });
         } catch (error) {
           console.error(error);
@@ -52,6 +50,7 @@ const PostsProvider: React.FC<Props> = ({ children }) => {
     setLocalStorageState(state);
   }, [state]);
 
+  console.log("data received", providerValue);
   return <PostsContext.Provider value={providerValue}>{children}</PostsContext.Provider>;
 };
 
