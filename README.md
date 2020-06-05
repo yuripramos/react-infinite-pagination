@@ -1,33 +1,54 @@
-# Infinite Pagination
+# Infinite-pagination
 
-## Problem
+[![standard-readme compliant](https://img.shields.io/badge/readme%20style-standard-brightgreen.svg?style=flat-square)](https://github.com/RichardLitt/standard-readme)
 
-There's this legacy API that contains info gathered across decades of existence. Your team needs to use one of the endpoints of that API to build a new web app.
+## :octopus: Getting Started
 
-This specific endpoint returns millions of items, paginated at 100 per page.
+|     | Specs                                                                                                                            |
+| --- | -------------------------------------------------------------------------------------------------------------------------------- |
+| ⚛️  | **React 16.12**. latest stable version of react                                                                                  |
+| ✨  | **React Hooks** [React hooks](https://reactjs.org/docs/hooks-intro.html)                                                         |
+| 😎  | **TypeScript** JavaScript that scales.                                                                                           |
 
-You job is to build a web app with a single page that lists all the items available in this legacy API in an infinite scrolling page. Whenever the user clicks in one of the items, the item becomes greyed out. This should persist even after refreshing the page.
+## :cloud: Installation
 
-Here's what you need to know:
+Makefiles aren't Windows friendly, if you have minGW64 and whole environment to run the makefile(Unix/macOS) do this:
 
-- The legacy API is at http://sf-legacy-api.now.sh
-- A simple `GET /items` will return the first 100 items.
-- To go to a specific page you use `GET /items?page=20` for instance.
-- The response will contain info about the total number of items, and the link to the next page.
+```sh
+make installation
+make start
+access http://localhost:8080/
+```
 
-## Guidelines
+If you **don't** have makefile enviroment ready, do this instead :
 
-Here's the important stuff that we take into account when reviewing this exercise:
+```sh
 
-- It should be simple to start your solution
-- It should contain some setup instructions
-- It should work correctly (this also means no performance issues)
-- It should look good
-- It should have an automated way to prove it's working correctly
-- It should use React.
+npm install or yarn
+npm run start or yarn start
+access http://localhost:8080/
+```
 
-Ideally we want this exercise to take you **no more than 90 minutes**. You can use this time limit to infer the level of polish we expect from your solution.
+**Requires node >= 10.0.0**
 
-## Delivery
 
-You will be given access to a github repository to work on your exercise. To submit your solution, open a pull request against the master branch. Use the body of the pull request to briefly describe your solution, what might be incomplete and why, etc. In case of any doubts please open an issue in the repository. We'll try to answer it as fast as possible.
+## Unit Tests
+
+`npm run test:coverage`
+
+Coverage Tests =~ 74%.
+
+[Testing Behaviors and not implementation details](https://kentcdodds.com/blog/testing-implementation-details)
+
+## Features
+
+1. Infinite Scroll - After scrolling to the end of page, load the next page.
+2. Save your disabled items - Due to performance, the items will be saved in local Storage only after the new fetch is made. This was made to send batches instead of saving after every interaction.
+
+## :exclamation: Credits
+
+Yuri Ramos
+
+## :scroll: License
+
+MIT
