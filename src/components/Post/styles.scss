@@ -4,7 +4,8 @@
   display: flex;
   padding: 5px;
   cursor: pointer;
-  border: solid 1px #000;
+  border-bottom: solid 1px #c1c1c1;
+  height: 88px;
 
   &:hover {
     background: #dfe3f9;
@@ -15,6 +16,7 @@
     padding: 1px 3px 0 10px;
   }
 }
+
 .disabled {
   cursor: not-allowed;
   color: rgba(53, 52, 52, 0.692);

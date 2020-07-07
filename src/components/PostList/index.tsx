@@ -28,7 +28,7 @@ export default ({ data, disabledItems }: Props) => {
   };
 
   return (
-    <section data-testid="postlist-section">
+    <section data-testid="postlist-section" className="list">
       {hasPosts ? (
         <ul className="posts">
           {posts.map((post: any) => (

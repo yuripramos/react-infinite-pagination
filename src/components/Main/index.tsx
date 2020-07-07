@@ -1,5 +1,4 @@
 import React, { useContext } from "react";
-
 import Hero from "../Hero/index";
 import PostList from "../PostList/index";
 import { RevenueContext } from "../../store/Revenue/index";
