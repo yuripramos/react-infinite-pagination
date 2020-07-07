@@ -1,4 +1,8 @@
-@import url('https://fonts.googleapis.com/css?family=Berkshire+Swash|Roboto+Slab:300,400,500,600,700&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,600;1,400&display=swap");
+
+$breakpoint-tablet: 768px;
+$breakpoint-smartphones: 400px;
+$breakpoint-desktop: 960px;
 
 * {
   margin: 0;
@@ -26,6 +30,7 @@ body,
 #root,
 #app {
   height: 100%;
+  background: #f8faff;
 }
 
 body {
@@ -35,7 +40,7 @@ body {
 body,
 input,
 button {
-  font-family: 'Roboto Slab', serif;
+  font-family: "Roboto Slab", serif;
 }
 
 #app {
@@ -45,8 +50,13 @@ button {
   .hero h1,
   & > header > h1,
   & > main > section > header > h1 {
-    font-family: 'Berkshire Swash', cursive;
-    font-weight: 400;
+    font-family: "Open Sans", sans-serif;
+    font-weight: 300;
+    font-size: 3rem;
+    line-height: 1em;
+    display: inline-block;
+    position: relative;
+    margin: 5px 0;
   }
 
   & > main,
@@ -54,7 +64,17 @@ button {
   & > footer > small {
     display: block;
     margin: 0 auto;
-    max-width: 1024px;
+    width: 1024px;
+
+    @media (min-width: $breakpoint-tablet) and (max-width: $breakpoint-desktop) {
+      max-width: 767px;
+      width: auto;
+    }
+
+    @media (min-width: $breakpoint-smartphones) and (max-width: $breakpoint-tablet) {
+      max-width: 959px;
+      width: auto;
+    }
   }
 
   & > header,
@@ -129,6 +149,7 @@ button {
     line-height: 2rem;
     font-size: 20px;
     padding: 0 30px;
+    background: #fff;
 
     & > section {
       padding: 80px 0;
@@ -140,24 +161,6 @@ button {
       & > header {
         display: flex;
         flex-wrap: wrap;
-
-        & > h1 {
-          font-size: 3rem;
-          line-height: 1em;
-          display: inline-block;
-          position: relative;
-          margin: 5px 0;
-
-          &:after {
-            content: '';
-            border-radius: 6px;
-            display: block;
-            height: 6px;
-            width: 32%;
-            background-color: #000;
-            margin: 4px 1% 0;
-          }
-        }
 
         & > aside {
           margin: 5px 5px 15px auto;

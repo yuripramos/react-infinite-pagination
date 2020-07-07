@@ -1,9 +1,9 @@
-import React, { createContext, useState, useEffect, ReactNode } from 'react';
+import React, { createContext, useState, useEffect, ReactNode } from "react";
 
-import { getPosts } from '../../../src/services/api';
-import { getStorageObject, setStorageObject } from '../../utils/helpers';
+import { getPosts } from "../../services/api";
+import { getStorageObject, setStorageObject } from "../../utils/helpers";
 
-const STORAGE_ID = 'posts-and-disabled-itens';
+const STORAGE_ID = "posts-and-disabled-itens";
 
 const INITIAL_STATE = {
   data: [] as any[],
@@ -17,18 +17,19 @@ const getLocalStorageState = () => {
   return lsState ? lsState : INITIAL_STATE;
 };
 
-const setLocalStorageState = (state: any) => setStorageObject(STORAGE_ID, state);
+const setLocalStorageState = (state: any) =>
+  setStorageObject(STORAGE_ID, state);
 
-const PostsContext = createContext({});
+const RevenueContext = createContext({});
 
 type Props = {
-  children: ReactNode
-}
+  children: ReactNode;
+};
 
-
-const PostsProvider: React.FC<Props> = ({ children }) => {
+const RevenueProvider: React.FC<Props> = ({ children }) => {
   const [state, setState] = useState(getLocalStorageState);
-  const updateState = (payload: any) => setState((state: any) => ({ ...state, ...payload }));
+  const updateState = (payload: any) =>
+    setState((state: any) => ({ ...state, ...payload }));
   const providerValue = { state, setState: updateState };
 
   useEffect(() => {
@@ -50,10 +51,11 @@ const PostsProvider: React.FC<Props> = ({ children }) => {
     setLocalStorageState(state);
   }, [state]);
 
-  return <PostsContext.Provider value={providerValue}>{children}</PostsContext.Provider>;
+  return (
+    <RevenueContext.Provider value={providerValue}>
+      {children}
+    </RevenueContext.Provider>
+  );
 };
 
-export {
-  PostsContext,
-  PostsProvider,
-};
+export { RevenueContext, RevenueProvider };

@@ -1,7 +1,7 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect } from "react";
 
-import Post from '../Post/index';
-import NoContent from '../NoContent/index';
+import Post from "../Post/index";
+import NoContent from "../NoContent/index";
 
 const getKey = (post: any) => {
   const { page } = post;
@@ -9,12 +9,11 @@ const getKey = (post: any) => {
 };
 
 type Props = {
-  data: any,
-  disabledItems: number[]
-}
+  data: any;
+  disabledItems: number[];
+};
 
 export default ({ data, disabledItems }: Props) => {
-
   const [posts, setPosts] = useState(data.data);
   const [clickedItems, setClickedItems] = useState<number[]>(disabledItems);
 
@@ -26,13 +25,10 @@ export default ({ data, disabledItems }: Props) => {
 
   const handleClick = (id: number) => {
     setClickedItems([...clickedItems, id]);
-  }
+  };
 
   return (
     <section data-testid="postlist-section">
-      <header>
-        <h1>All Posts</h1>
-      </header>
       {hasPosts ? (
         <ul className="posts">
           {posts.map((post: any) => (
@@ -47,8 +43,8 @@ export default ({ data, disabledItems }: Props) => {
           ))}
         </ul>
       ) : (
-          <NoContent />
-        )}
+        <NoContent />
+      )}
     </section>
   );
 };
