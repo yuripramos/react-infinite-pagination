@@ -3,42 +3,36 @@ import React, { useState, useEffect } from "react";
 import Post from "../Post/index";
 import NoContent from "../NoContent/index";
 
-const getKey = (post: any) => {
-  const { page } = post;
-  return `post-${page}-${Math.round(Math.random() * 102134220)}`;
+const getKey = (page: any) => {
+  return `entry-${page}-${Math.round(Math.random() * 102134220)}`;
 };
 
 type Props = {
   data: any;
-  disabledItems: number[];
 };
 
-export default ({ data, disabledItems }: Props) => {
-  const [posts, setPosts] = useState(data.data);
-  const [clickedItems, setClickedItems] = useState<number[]>(disabledItems);
+export default ({ data }: Props) => {
+  const [entries, setEntries] = useState(data);
 
   useEffect(() => {
-    setPosts(data.data);
+    setEntries(data);
   }, [data]);
 
-  const hasPosts = posts && posts.length > 0;
+  console.log("data => ", data);
+  console.log("entries", entries.results && entries.results.all);
 
-  const handleClick = (id: number) => {
-    setClickedItems([...clickedItems, id]);
-  };
+  const hasEntries =
+    entries && entries.results && entries.results.all.length > 0;
 
   return (
     <section data-testid="postlist-section" className="list">
-      {hasPosts ? (
+      {hasEntries ? (
         <ul className="posts">
-          {posts.map((post: any) => (
+          {entries.results.all.map((entry: any) => (
             <Post
-              key={getKey(data.metadata)}
-              data={post}
-              page={parseInt(data.metadata.page)}
-              handleClick={handleClick}
-              disabled={clickedItems.includes(post.absoluteIndex)}
-              clickedItems={clickedItems}
+              key={getKey(entry.count)}
+              data={entry}
+              page={parseInt(entries.next_cursor)}
             />
           ))}
         </ul>

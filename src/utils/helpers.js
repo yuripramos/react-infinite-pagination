@@ -1,9 +1,9 @@
-import ls from 'local-storage';
+import ls from "local-storage";
 
+export const areEqualObjects = (obj1, obj2) =>
+  JSON.stringify(obj1) === JSON.stringify(obj2);
 
-export const areEqualObjects = (obj1, obj2) => JSON.stringify(obj1) === JSON.stringify(obj2);
-
-export const getStorageObject = (lsId) => {
+export const getStorageObject = lsId => {
   const lsItem = ls.get(lsId);
   return lsItem ? lsItem : null;
 };
@@ -24,5 +24,5 @@ export const setStorageObject = (lsId, obj = {}) => {
 export default {
   areEqualObjects,
   getStorageObject,
-  setStorageObject,
+  setStorageObject
 };

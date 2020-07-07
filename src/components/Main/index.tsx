@@ -9,7 +9,7 @@ export default () => {
   return (
     <main>
       <Hero />
-      <PostList data={posts.data} disabledItems={posts.clickedItems} />
+      <PostList data={posts.data} />
     </main>
   );
 };

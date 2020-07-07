@@ -1,24 +1,13 @@
 import React, { createContext, useState, useEffect, ReactNode } from "react";
 
 import { getPosts } from "../../services/api";
-import { getStorageObject, setStorageObject } from "../../utils/helpers";
-
-const STORAGE_ID = "posts-and-disabled-itens";
 
 const INITIAL_STATE = {
   data: [] as any[],
   loaded: true,
   error: false,
-  clickedItems: [] as number[]
+  page: 1
 };
-
-const getLocalStorageState = () => {
-  const lsState = getStorageObject(STORAGE_ID);
-  return lsState ? lsState : INITIAL_STATE;
-};
-
-const setLocalStorageState = (state: any) =>
-  setStorageObject(STORAGE_ID, state);
 
 const RevenueContext = createContext({});
 
@@ -27,7 +16,7 @@ type Props = {
 };
 
 const RevenueProvider: React.FC<Props> = ({ children }) => {
-  const [state, setState] = useState(getLocalStorageState);
+  const [state, setState] = useState(INITIAL_STATE);
   const updateState = (payload: any) =>
     setState((state: any) => ({ ...state, ...payload }));
   const providerValue = { state, setState: updateState };
@@ -46,10 +35,6 @@ const RevenueProvider: React.FC<Props> = ({ children }) => {
       }
     })();
   }, []); //eslint-disable-line
-
-  useEffect(() => {
-    setLocalStorageState(state);
-  }, [state]);
 
   return (
     <RevenueContext.Provider value={providerValue}>

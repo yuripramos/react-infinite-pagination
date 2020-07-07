@@ -5,15 +5,8 @@ import { RevenueContext } from "../../store/Revenue/index";
 import { getPosts } from "../../services/api";
 
 type Post = {
-  data: {
-    id: string;
-    absoluteIndex: number;
-    name: string;
-  };
+  data: any;
   page: number;
-  handleClick: (id: number) => void;
-  disabled: boolean;
-  clickedItems: number[];
 };
 
 type MyContextType = {
@@ -21,13 +14,7 @@ type MyContextType = {
   setState?: (data: object) => void;
 };
 
-export default ({
-  data: { id, absoluteIndex, name },
-  page,
-  handleClick,
-  disabled,
-  clickedItems
-}: Post) => {
+export default ({ data: { ds, y }, page }: Post) => {
   const myPostContext = useContext<MyContextType>(RevenueContext);
 
   window.onscroll = _.debounce(async () => {
@@ -36,29 +23,22 @@ export default ({
         document.documentElement.scrollTop ===
       document.documentElement.clientHeight
     ) {
-      const { data } = await getPosts(page + 1);
+      const { data } = await getPosts(page);
       myPostContext.setState({
         ...myPostContext.state,
-        clickedItems,
         data: {
-          data: _.flatten([myPostContext.state.data.data, data.data]),
-          metadata: data.metadata
+          data: _.flatten([myPostContext.state.data.data, data.data])
         }
       });
+      console.log("log context", myPostContext);
     }
   }, 100);
 
   return (
-    <li
-      className={`item ${disabled && "disabled"}`}
-      onClick={() => handleClick(absoluteIndex)}
-    >
-      <span>name:</span>
-      {name}
-      <span>id:</span>
-      {id}
-      <span>index:</span>
-      {absoluteIndex}
+    <li className={`item`}>
+      {ds}
+      <span>$:</span>
+      {y}
     </li>
   );
 };
