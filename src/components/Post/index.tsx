@@ -1,7 +1,10 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useState, Fragment } from "react";
 import "./styles.scss";
 import _ from "lodash";
 import { RevenueContext } from "../../store/Revenue/index";
+import formatNumber from "../../utils/currency";
+import moment from "moment";
+
 import { getPosts } from "../../services/api";
 
 type Post = {
@@ -38,15 +41,26 @@ export default ({ data: { ds, y }, page }: Post) => {
         }
       });
     }
-  }, 100);
+  }, 200);
+
+  var today = new Date();
+  var currentDate =
+    today.getFullYear() + "-" + (today.getMonth() + 1) + "-" + today.getDate();
+
+  const isToday = moment(ds).isSame(currentDate);
 
   return (
     <li className={`item`}>
-      <span className="day">
-        {ds} <br />
-        Overall
+      <span className={isToday ? "today day" : "day"}>
+        {isToday ? (
+          <Fragment>Today</Fragment>
+        ) : (
+          <Fragment>{moment(ds).format("LL")}</Fragment>
+        )}{" "}
+        <br />
+        <span className="category">Overall</span>
       </span>
-      <span className="amount">${y}</span>
+      <span className="amount">${formatNumber(y)}</span>
     </li>
   );
 };

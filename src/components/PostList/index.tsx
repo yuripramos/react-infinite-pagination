@@ -2,8 +2,9 @@ import React, { useState, useEffect } from "react";
 import "./styles.scss";
 import Post from "../Post/index";
 import NoContent from "../NoContent/index";
-import arrowDown from "../../assets/svg/arrow-down.svg";
-const getKey = (page: any) => {
+import AngleDown from "../../assets/icons/angleDown";
+
+const getKey = (page: number) => {
   return `entry-${page}-${Math.round(Math.random() * 102134220)}`;
 };
 
@@ -32,8 +33,11 @@ export default ({ data }: Props) => {
               page={parseInt(entries.next_cursor)}
             />
           ))}
-          <div className="overlay-content">
-            <img src={arrowDown} />{" "}
+          <div className="overlay-content" />
+          <div className="image-container">
+            <div className="image-wrapper">
+              <AngleDown />
+            </div>
           </div>
         </ul>
       ) : (
