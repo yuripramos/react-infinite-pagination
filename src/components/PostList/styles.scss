@@ -1,0 +1,17 @@
+.overlay-content {
+  // background: linear-gradient(
+  //   0deg,
+  //   #ffffff -121.75%,
+  //   rgba(255, 255, 255, 0.8) 0%
+  // );
+
+  height: 100px;
+  background: linear-gradient(
+    0deg,
+    #dc2a2a -121.75%,
+    rgba(125, 37, 37, 0.8) 0%
+  );
+  width: 100%;
+  position: relative;
+  bottom: 90px;
+}

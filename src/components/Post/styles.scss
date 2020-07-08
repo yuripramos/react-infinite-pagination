@@ -1,19 +1,37 @@
 .item {
   align-items: center;
   color: #000;
-  display: flex;
+  display: inline-flex;
   padding: 5px;
   cursor: pointer;
   border-bottom: solid 1px #c1c1c1;
   height: 88px;
+  width: 100%;
+  color: #000;
 
   &:hover {
     background: #dfe3f9;
   }
   > span {
-    color: #dc0099;
-    font-weight: 800;
     padding: 1px 3px 0 10px;
+  }
+
+  > .day {
+    text-align: left;
+    float: left;
+    width: 50%;
+
+    & .category {
+      float: left;
+      text-align: left;
+    }
+  }
+
+  > .amount {
+    width: 50%;
+    text-align: right;
+    float: right;
+    font-weight: bold;
   }
 }
 

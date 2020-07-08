@@ -1,7 +1,7 @@
 import axios from "axios";
+import { getThrottledAxiosInstance } from "../requests/throttledAxiosIstance";
 
-const api = axios.create({
-  baseURL: "https://app.peelinsights.com/api/"
-});
+const throttledAxiosInstance = getThrottledAxiosInstance();
 
-export const getPosts = (page = 10) => api.get(`test_stats/?cursor=${page}`);
+export const getPosts = (page = 10) =>
+  throttledAxiosInstance.get(`test_stats/?cursor=${page}`);

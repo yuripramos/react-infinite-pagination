@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from "react";
-
+import "./styles.scss";
 import Post from "../Post/index";
 import NoContent from "../NoContent/index";
-
+import arrowDown from "../../assets/svg/arrow-down.svg";
 const getKey = (page: any) => {
   return `entry-${page}-${Math.round(Math.random() * 102134220)}`;
 };
@@ -18,9 +18,6 @@ export default ({ data }: Props) => {
     setEntries(data);
   }, [data]);
 
-  console.log("data => ", data);
-  console.log("entries", entries.results && entries.results.all);
-
   const hasEntries =
     entries && entries.results && entries.results.all.length > 0;
 
@@ -35,6 +32,9 @@ export default ({ data }: Props) => {
               page={parseInt(entries.next_cursor)}
             />
           ))}
+          <div className="overlay-content">
+            <img src={arrowDown} />{" "}
+          </div>
         </ul>
       ) : (
         <NoContent />

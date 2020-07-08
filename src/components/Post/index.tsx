@@ -15,7 +15,7 @@ type MyContextType = {
 };
 
 export default ({ data: { ds, y }, page }: Post) => {
-  const myPostContext = useContext<MyContextType>(RevenueContext);
+  const myEntriesContext = useContext<MyContextType>(RevenueContext);
 
   window.onscroll = _.debounce(async () => {
     if (
@@ -24,21 +24,29 @@ export default ({ data: { ds, y }, page }: Post) => {
       document.documentElement.clientHeight
     ) {
       const { data } = await getPosts(page);
-      myPostContext.setState({
-        ...myPostContext.state,
+      myEntriesContext.setState({
+        ...myEntriesContext.state,
         data: {
-          data: _.flatten([myPostContext.state.data.data, data.data])
+          count: data.count,
+          next_cursor: data.next_cursor,
+          results: {
+            all: [
+              ...myEntriesContext.state.data.results.all,
+              ...data.results.all
+            ]
+          }
         }
       });
-      console.log("log context", myPostContext);
     }
   }, 100);
 
   return (
     <li className={`item`}>
-      {ds}
-      <span>$:</span>
-      {y}
+      <span className="day">
+        {ds} <br />
+        Overall
+      </span>
+      <span className="amount">${y}</span>
     </li>
   );
 };
