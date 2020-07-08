@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import "./styles.scss";
-import Post from "../Post/index";
+import Entry from "../Entry/index";
 import NoContent from "../NoContent/index";
 import AngleDown from "../../assets/icons/angleDown";
 
@@ -25,9 +25,9 @@ export default ({ data }: Props) => {
   return (
     <section data-testid="postlist-section" className="list">
       {hasEntries ? (
-        <ul className="posts">
+        <ul className="entries">
           {entries.results.all.map((entry: any) => (
-            <Post
+            <Entry
               key={getKey(entry.count)}
               data={entry}
               page={parseInt(entries.next_cursor)}

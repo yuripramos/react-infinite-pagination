@@ -1,4 +1,4 @@
-import React, { useContext, useState, Fragment } from "react";
+import React, { useContext, Fragment } from "react";
 import "./styles.scss";
 import _ from "lodash";
 import { RevenueContext } from "../../store/Revenue/index";
@@ -7,7 +7,7 @@ import moment from "moment";
 
 import { getPosts } from "../../services/api";
 
-type Post = {
+type Entry = {
   data: any;
   page: number;
 };
@@ -17,7 +17,7 @@ type MyContextType = {
   setState?: (data: object) => void;
 };
 
-export default ({ data: { ds, y }, page }: Post) => {
+export default ({ data: { ds, y }, page }: Entry) => {
   const myEntriesContext = useContext<MyContextType>(RevenueContext);
 
   window.onscroll = _.debounce(async () => {

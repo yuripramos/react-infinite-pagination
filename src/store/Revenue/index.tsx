@@ -1,5 +1,4 @@
 import React, { createContext, useState, useEffect, ReactNode } from "react";
-
 import { getPosts } from "../../services/api";
 
 const INITIAL_STATE = {
