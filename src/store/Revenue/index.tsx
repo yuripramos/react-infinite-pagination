@@ -1,5 +1,5 @@
 import React, { createContext, useState, useEffect, ReactNode } from "react";
-import { getPosts } from "../../services/api";
+import { getEntries } from "../../services/api";
 
 const INITIAL_STATE = {
   data: [] as any[],
@@ -18,13 +18,14 @@ const RevenueProvider: React.FC<Props> = ({ children }) => {
   const [state, setState] = useState(INITIAL_STATE);
   const updateState = (payload: any) =>
     setState((state: any) => ({ ...state, ...payload }));
+
   const providerValue = { state, setState: updateState };
 
   useEffect(() => {
     (async () => {
       try {
         updateState({ loaded: false });
-        const { data } = await getPosts();
+        const { data } = await getEntries();
         updateState({ data });
       } catch (error) {
         console.error(error);

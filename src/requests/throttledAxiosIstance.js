@@ -1,6 +1,7 @@
 import axios from "axios";
 
-const MILLISECONDS_BETWEEN_REQUESTS = 1000;
+//20 requests per minute
+const MILLISECONDS_BETWEEN_REQUESTS = 3000;
 
 const injectSchedulerInterceptor = (axiosInstance, interval) => {
   let lastInvocationTime = undefined;

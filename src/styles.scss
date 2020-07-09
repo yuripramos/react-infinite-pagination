@@ -52,17 +52,17 @@ button {
   & > header > h1,
   & > main > section > header > h1 {
     font-weight: 300;
-    font-size: 3rem;
+    font-size: 40px;
     line-height: 1em;
-    display: inline-block;
+    display: inline-flex;
     position: relative;
     margin: 5px 0;
+    justify-content: center;
   }
 
   & > main,
   & > header > h1,
   & > footer > small {
-    display: block;
     margin: 0 auto;
     width: 1118px;
 
@@ -103,44 +103,6 @@ button {
     &:hover,
     &:focus {
       color: #666;
-    }
-  }
-
-  .btn {
-    background-color: #000;
-    border: none;
-    border-radius: 42px;
-    color: #fff;
-    display: flex;
-    position: relative;
-    align-items: center;
-    justify-content: center;
-    transition: 0.25s ease-out;
-    transition-property: color, background-color, box-shadow;
-
-    svg {
-      fill: #fff;
-      transition: transform 0.15s ease-out;
-    }
-
-    &.order {
-      height: 42px;
-      width: 42px;
-      padding: 10px;
-
-      svg {
-        width: 20px;
-        transform: rotate(-90deg);
-      }
-
-      &.asc svg {
-        transform: rotate(90deg);
-      }
-    }
-
-    &:focus,
-    &:hover {
-      box-shadow: 0 4px 18px #999;
     }
   }
 

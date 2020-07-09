@@ -1,11 +1,11 @@
 import React, { useContext, Fragment } from "react";
 import "./styles.scss";
 import _ from "lodash";
-import { RevenueContext } from "../../store/Revenue/index";
-import formatNumber from "../../utils/currency";
 import moment from "moment";
-
-import { getPosts } from "../../services/api";
+import formatNumber from "../../utils/currency";
+import { RevenueContext } from "../../store/Revenue/index";
+import { isToday } from "../../utils/date";
+import { getEntries } from "../../services/api";
 
 type Entry = {
   data: any;
@@ -26,7 +26,8 @@ export default ({ data: { ds, y }, page }: Entry) => {
         document.documentElement.scrollTop ===
       document.documentElement.clientHeight
     ) {
-      const { data } = await getPosts(page);
+      const { data } = await getEntries(page);
+
       myEntriesContext.setState({
         ...myEntriesContext.state,
         data: {
@@ -43,16 +44,10 @@ export default ({ data: { ds, y }, page }: Entry) => {
     }
   }, 200);
 
-  var today = new Date();
-  var currentDate =
-    today.getFullYear() + "-" + (today.getMonth() + 1) + "-" + today.getDate();
-
-  const isToday = moment(ds).isSame(currentDate);
-
   return (
     <li className={`item`}>
-      <span className={isToday ? "today day" : "day"}>
-        {isToday ? (
+      <span className={isToday(ds) ? "today day" : "day"}>
+        {isToday(ds) ? (
           <Fragment>Today</Fragment>
         ) : (
           <Fragment>{moment(ds).format("LL")}</Fragment>

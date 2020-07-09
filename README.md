@@ -1,5 +1,7 @@
 # Infinite-pagination
 
+A list component that can display revenue stats sorted by date, Throttling requests to max 1 request every 3s.
+
 [![standard-readme compliant](https://img.shields.io/badge/readme%20style-standard-brightgreen.svg?style=flat-square)](https://github.com/RichardLitt/standard-readme)
 
 ## :octopus: Getting Started
@@ -35,7 +37,7 @@ access http://localhost:8080/
 
 `npm run test:coverage`
 
-Coverage Tests =~ 74%.
+Coverage Tests =~ 73%.
 
 [Testing Behaviors and not implementation details](https://kentcdodds.com/blog/testing-implementation-details)
 

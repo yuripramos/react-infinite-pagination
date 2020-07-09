@@ -6,26 +6,6 @@
 
   article {
     flex: 1 0 50%;
-
-    @media (max-width: 820px) {
-      flex: 1 0 100%;
-      text-align: center;
-      &:nth-of-type(1) {
-        order: 2;
-      }
-      &:nth-of-type(2) {
-        order: 1;
-      }
-      h1 {
-        display: none;
-      }
-    }
-  }
-
-  img {
-    max-width: 100%;
-    overflow: hidden;
-    object-fit: contain;
   }
 
   h1 {
