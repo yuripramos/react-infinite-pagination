@@ -1,7 +1,6 @@
-import React from 'react';
-
-import Hero from './index';
-import { render } from '@testing-library/react';
+import React from "react";
+import Hero from "./index";
+import { render } from "@testing-library/react";
 
 describe("<Hero />", () => {
   it("Should render correctly", () => {

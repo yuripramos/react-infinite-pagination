@@ -1,12 +1,10 @@
-import React, { ReactNode } from 'react';
-import { PostsProvider } from './Posts/index';
-
+import React, { ReactNode } from "react";
+import { RevenueProvider } from "./Revenue/index";
 
 type Props = {
-  children: ReactNode
-}
-
+  children: ReactNode;
+};
 
 export default ({ children }: Props) => (
-  <PostsProvider>{children}</PostsProvider>
+  <RevenueProvider>{children}</RevenueProvider>
 );

@@ -1,0 +1,34 @@
+$breakpoint-tablet: 768px;
+$breakpoint-smartphones: 375px;
+$breakpoint-desktop: 1117px;
+
+.overlay-content {
+  background: linear-gradient(
+    0deg,
+    #ffffff -121.75%,
+    rgba(255, 255, 255, 0.8) 0%
+  );
+  height: 90px;
+  width: 850px;
+  position: absolute;
+  transform: translateY(-88px);
+
+  @media (min-width: $breakpoint-tablet) and (max-width: $breakpoint-desktop) {
+    width: 600px;
+  }
+  @media (min-width: $breakpoint-smartphones) and (max-width: $breakpoint-tablet) {
+    display: none;
+  }
+}
+
+.image-container {
+  width: 100%;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+
+  & .image-wrapper {
+    width: 30px;
+    height: 38px;
+  }
+}

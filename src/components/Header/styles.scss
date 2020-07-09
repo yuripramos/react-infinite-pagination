@@ -1,0 +1,46 @@
+$breakpoint-desktop: 1117px;
+
+header {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  @media (max-width: $breakpoint-desktop) {
+    grid-template-columns: auto;
+  }
+  > h1 {
+    padding-left: 15%;
+    @media (max-width: $breakpoint-desktop) {
+      padding-left: 0;
+    }
+  }
+  & .author-box {
+    font-style: normal;
+    font-weight: 300;
+    font-size: 18px;
+    line-height: 25px;
+    align-items: center;
+    text-align: center;
+    color: #1b221a;
+    display: grid;
+    grid-template-columns: 1fr 0.5fr;
+
+    @media (max-width: $breakpoint-desktop) {
+      display: none;
+    }
+
+    & .author {
+      text-align: right;
+      & .author-name {
+        color: #2d9cee;
+        font-weight: 600;
+      }
+    }
+
+    & .img-wrapper {
+      margin-left: -15px;
+      & .profile {
+        width: 30px;
+        height: 30px;
+      }
+    }
+  }
+}

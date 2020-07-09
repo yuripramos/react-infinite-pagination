@@ -1,0 +1,60 @@
+.item {
+  align-items: center;
+  color: #000;
+  display: inline-flex;
+  padding: 5px;
+  cursor: pointer;
+  border-bottom: solid 1px #c1c1c1;
+  height: 88px;
+  width: 100%;
+  color: #000;
+
+  &:hover {
+    background: #dfe3f9;
+  }
+  > span {
+    padding: 1px 3px 0 10px;
+  }
+
+  > .day {
+    text-align: left;
+    float: left;
+    width: 50%;
+    font-style: normal;
+    font-weight: 300;
+    font-size: 18px;
+    line-height: 25px;
+
+    & .category {
+      float: left;
+      text-align: left;
+      color: #000;
+      font-weight: 300;
+      font-size: 18px;
+    }
+  }
+
+  > .today {
+    color: #fdcd00;
+    font-weight: 600;
+  }
+
+  > .amount {
+    width: 50%;
+    text-align: right;
+    float: right;
+    font-weight: 600;
+  }
+}
+
+.disabled {
+  cursor: not-allowed;
+  color: rgba(53, 52, 52, 0.692);
+  background: transparent;
+  &:hover {
+    background: transparent;
+  }
+  > span {
+    color: rgba(53, 52, 52, 0.692);
+  }
+}

@@ -1,7 +1,6 @@
-import React from 'react';
-
-import Header from './index';
-import { render } from '@testing-library/react';
+import React from "react";
+import Header from "./index";
+import { render } from "@testing-library/react";
 
 describe("<Header />", () => {
   it("Should render correctly", () => {

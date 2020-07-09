@@ -1,16 +1,15 @@
-import React, { useContext } from 'react';
-
-import Hero from '../Hero/index';
-import PostList from '../PostList/index';
-import { PostsContext } from '../../store/Posts/index';
+import React, { useContext } from "react";
+import Hero from "../Hero/index";
+import EntryList from "../EntryList/index";
+import { RevenueContext } from "../../store/Revenue/index";
 
 export default () => {
-  const { state: posts }: any = useContext(PostsContext);
+  const { state: entries }: any = useContext(RevenueContext);
 
   return (
     <main>
       <Hero />
-      <PostList data={posts.data} disabledItems={posts.clickedItems} />
+      <EntryList data={entries.data} />
     </main>
   );
 };
